@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<p id="message">This page will be posted in <strong></strong> seconds </p>
-<button id="add-to-blacklist" style="white-space:nowrap;">Do not track this page</button>
-<script src="popup.js"></script>
-</body>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="add-to-whitelist" style="white-space:nowrap;">Track what I read from here!</button>
+        <button id="remove-from-whitelist" class="hidden" style="white-space:nowrap;">Do not track from here!</button>
+        <a id="my-perspective" href="">See Your perspective</a>
+        <script src="jquery-1.11.2.js"></script>
+        <script src="popup.js"></script>
+        <script src="anchor.js"></script>
+    </body>
 </html>

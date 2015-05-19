@@ -1,25 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
-    getCurrentTab(function(Tab) {
+chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, Tab) {
+    if (changeInfo.status == 'complete') {
         fetchReferrer(Tab, function (Tab, referrer) {
-            console.log(referrer)
             visit({url: Tab.url, title: Tab.title, referrer: referrer});
         });
-    })
+    }
 });
-
-function getCurrentTab(callback) {
-    var queryInfo = {
-        active: true,
-        currentWindow: true
-    };
-
-    chrome.tabs.query(queryInfo, function(tabs) {
-        var tab = tabs[0];
-        if (tab.incognito == false) {
-            callback(tab);
-        }
-    });
-}
 
 var fetchReferrer = function(Tab, callback) {
     chrome.tabs.executeScript(
